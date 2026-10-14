@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+}
+
+nav {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.plant-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.plant-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  width: 220px;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
