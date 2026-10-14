@@ -1,8 +1,9 @@
 function Navigation() {
   return (
     <nav>
-      <h1>My Plant Collection</h1>
-      <p>Discover different plants</p>
+      <a href="#home">Home</a>
+      <a href="#plants">Plants</a>
+      <a href="#footer">About</a>
     </nav>
   );
 }
