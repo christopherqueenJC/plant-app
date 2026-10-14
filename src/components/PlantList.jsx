@@ -36,11 +36,46 @@ function PlantList() {
       height: "1 foot",
       sunlight: "Full Sun",
       season: "Summer"
+    },
+    {
+      id: 6,
+      name: "Hydrangea",
+      height: "5 feet",
+      sunlight: "Partial Sun",
+      season: "Summer"
+    },
+    {
+      id: 7,
+      name: "Daffodil",
+      height: "1 foot",
+      sunlight: "Full Sun",
+      season: "Spring"
+    },
+    {
+      id: 8,
+      name: "Peony",
+      height: "3 feet",
+      sunlight: "Full Sun",
+      season: "Spring"
+    },
+    {
+      id: 9,
+      name: "Marigold",
+      height: "1 foot",
+      sunlight: "Full Sun",
+      season: "Summer"
+    },
+    {
+      id: 10,
+      name: "Chrysanthemum",
+      height: "3 feet",
+      sunlight: "Full Sun",
+      season: "Fall"
     }
   ];
 
   return (
-    <main>
+    <main id="plants">
       <h2>Our Plants</h2>
 
       <div className="plant-list">

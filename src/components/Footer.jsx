@@ -1,7 +1,7 @@
 
 function Footer() {
   return (
-    <footer>
+    <footer id="footer">
       <p>My Plant Collection - 2026</p>
     </footer>
   );
