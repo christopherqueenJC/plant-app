@@ -53,3 +53,34 @@ footer {
   text-align: center;
   padding: 15px;
 }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.controls input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.controls button {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: #444;
+}
