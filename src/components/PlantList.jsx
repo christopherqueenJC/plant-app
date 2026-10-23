@@ -6,116 +6,139 @@ function PlantList() {
     {
       id: 1,
       name: "Sunflower",
+      scientificName: "Helianthus annuus",
       height: "6 feet",
       sunlight: "Full Sun",
+      soilType: "Well-drained",
       season: "Summer"
     },
     {
       id: 2,
       name: "Rose",
+      scientificName: "Rosa",
       height: "3 feet",
       sunlight: "Full Sun",
+      soilType: "Loamy",
       season: "Spring"
     },
     {
       id: 3,
       name: "Tulip",
+      scientificName: "Tulipa",
       height: "1 foot",
       sunlight: "Partial Sun",
+      soilType: "Well-drained",
       season: "Spring"
     },
     {
       id: 4,
       name: "Lavender",
+      scientificName: "Lavandula",
       height: "2 feet",
       sunlight: "Full Sun",
+      soilType: "Sandy",
       season: "Summer"
     },
     {
       id: 5,
       name: "Daisy",
+      scientificName: "Bellis perennis",
       height: "1 foot",
       sunlight: "Full Sun",
+      soilType: "Loamy",
       season: "Summer"
     },
     {
       id: 6,
       name: "Hydrangea",
+      scientificName: "Hydrangea macrophylla",
       height: "5 feet",
       sunlight: "Partial Sun",
+      soilType: "Moist",
       season: "Summer"
     },
     {
       id: 7,
       name: "Daffodil",
+      scientificName: "Narcissus",
       height: "1 foot",
       sunlight: "Full Sun",
+      soilType: "Well-drained",
       season: "Spring"
     },
     {
       id: 8,
       name: "Peony",
+      scientificName: "Paeonia",
       height: "3 feet",
       sunlight: "Full Sun",
+      soilType: "Loamy",
       season: "Spring"
     },
     {
       id: 9,
       name: "Marigold",
+      scientificName: "Tagetes",
       height: "1 foot",
       sunlight: "Full Sun",
+      soilType: "Sandy",
       season: "Summer"
     },
     {
       id: 10,
       name: "Chrysanthemum",
+      scientificName: "Chrysanthemum",
       height: "3 feet",
       sunlight: "Full Sun",
+      soilType: "Loamy",
       season: "Fall"
     }
   ];
 
   const [search, setSearch] = useState("");
   const [sunlight, setSunlight] = useState("All");
+  const [soilType, setSoilType] = useState("All");
   const [season, setSeason] = useState("All");
 
-  const [sortAlphabetically, setSortAlphabetically] = useState(false);
+  const filteredPlants = plants.filter(function (plant) {
+    const searchText = search.toLowerCase();
 
-  let filteredPlants = plants.filter(function (plant) {
-    const matchesSearch = plant.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
+    const matchesName =
+      plant.name.toLowerCase().includes(searchText) ||
+      plant.scientificName.toLowerCase().includes(searchText);
 
     const matchesSunlight =
       sunlight === "All" || plant.sunlight === sunlight;
 
+    const matchesSoil =
+      soilType === "All" || plant.soilType === soilType;
+
     const matchesSeason =
       season === "All" || plant.season === season;
 
-    return matchesSearch && matchesSunlight && matchesSeason;
+    return (
+      matchesName &&
+      matchesSunlight &&
+      matchesSoil &&
+      matchesSeason
+    );
   });
 
-  if (sortAlphabetically) {
-    filteredPlants = [...filteredPlants].sort(function (a, b) {
-      return a.name.localeCompare(b.name);
-    });
-  }
-
-  function clearFilters() {
+  function resetFilters() {
     setSearch("");
     setSunlight("All");
+    setSoilType("All");
     setSeason("All");
-    setSortAlphabetically(false);
   }
 
   return (
     <main id="plants">
-      <h2>Our Plants</h2>
+      <h2>Plant Directory</h2>
 
       <div className="controls">
         <input
           type="text"
-          placeholder="Search plants..."
+          placeholder="Search common or scientific name..."
           value={search}
           onChange={function (event) {
             setSearch(event.target.value);
@@ -134,6 +157,19 @@ function PlantList() {
         </select>
 
         <select
+          value={soilType}
+          onChange={function (event) {
+            setSoilType(event.target.value);
+          }}
+        >
+          <option value="All">All Soil Types</option>
+          <option value="Well-drained">Well-drained</option>
+          <option value="Loamy">Loamy</option>
+          <option value="Sandy">Sandy</option>
+          <option value="Moist">Moist</option>
+        </select>
+
+        <select
           value={season}
           onChange={function (event) {
             setSeason(event.target.value);
@@ -145,16 +181,8 @@ function PlantList() {
           <option value="Fall">Fall</option>
         </select>
 
-        <button
-          onClick={function () {
-            setSortAlphabetically(!sortAlphabetically);
-          }}
-        >
-          {sortAlphabetically ? "Original Order" : "Sort A-Z"}
-        </button>
-
-        <button onClick={clearFilters}>
-          Clear Filters
+        <button onClick={resetFilters}>
+          Reset Filters
         </button>
       </div>
 
@@ -169,14 +197,16 @@ function PlantList() {
               <PlantCard
                 key={plant.id}
                 name={plant.name}
+                scientificName={plant.scientificName}
                 height={plant.height}
                 sunlight={plant.sunlight}
+                soilType={plant.soilType}
                 season={plant.season}
               />
             );
           })
         ) : (
-          <p>No plants found. Try changing your search or filters.</p>
+          <p>No plants found. Try different search terms or filters.</p>
         )}
       </div>
     </main>
