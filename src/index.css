@@ -84,3 +84,24 @@ footer {
 .controls button:hover {
   background-color: #444;
 }
+
+.api-plants {
+  padding: 20px;
+}
+
+.api-plant-image {
+  width: 100%;
+  max-width: 220px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.api-credit {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.api-credit a {
+  color: black;
+}
