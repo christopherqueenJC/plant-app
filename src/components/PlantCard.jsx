@@ -7,6 +7,20 @@ function PlantCard(props) {
       <p>Sunlight: {props.sunlight}</p>
       <p>Soil Type: {props.soilType}</p>
       <p>Bloom Season: {props.season}</p>
+
+      <button
+        type="button"
+        onClick={props.onEdit}
+      >
+        Edit
+      </button>
+
+      <button
+        type="button"
+        onClick={props.onDelete}
+      >
+        Delete
+      </button>
     </div>
   );
 }
